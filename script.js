@@ -57,11 +57,78 @@ modalCancel?.addEventListener("click", () => {
 });
 
 // =======================
+// 📩 Message Form Submission
+// =======================
+const messageForm = document.getElementById("messageForm");
+const modalConfirmation = document.getElementById("modalConfirmation");
+const confirmationCancel = document.getElementById("confirmationCancel");
+
+messageForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nameInput = messageForm.querySelector(".modal-input[type='text']");
+  const emailInput = messageForm.querySelector(".modal-input[type='email']");
+  const codeSelect = messageForm.querySelector(".country-code");
+  const phoneInput = messageForm.querySelector(".phone-number");
+  const messageTextarea = messageForm.querySelector(".modal-textarea");
+
+  // Reset borders
+  [nameInput, emailInput, phoneInput, messageTextarea].forEach((el) => {
+    el.style.border = "none";
+  });
+
+  // Validation
+  let hasError = false;
+  if (!nameInput.value.trim()) {
+    nameInput.style.border = "2px solid red";
+    hasError = true;
+  }
+  if (!emailInput.value.trim()) {
+    emailInput.style.border = "2px solid red";
+    hasError = true;
+  }
+  if (!phoneInput.value.trim()) {
+    phoneInput.style.border = "2px solid red";
+    hasError = true;
+  }
+  if (!messageTextarea.value.trim()) {
+    messageTextarea.style.border = "2px solid red";
+    hasError = true;
+  }
+  if (hasError) return;
+
+  // Simulate sending
+  const fullPhone = `${codeSelect.value} ${phoneInput.value}`;
+  console.log("Sending message:", {
+    name: nameInput.value,
+    email: emailInput.value,
+    phone: fullPhone,
+    message: messageTextarea.value,
+  });
+
+  // Show confirmation
+  messageForm.classList.add("hidden");
+  modalConfirmation.classList.add("show");
+});
+
+confirmationCancel?.addEventListener("click", () => {
+  modalConfirmation.classList.remove("show");
+  messageForm.classList.remove("hidden");
+  messageForm.reset();
+});
+
+// =======================
 // 🖼️ Auto-Scrolling Gallery
 // =======================
 const creationLibrary = document.querySelector(".creation-library");
 let scrollSpeed = 2;
 let scrollInterval;
+
+function adjustScrollSpeed() {
+  scrollSpeed = window.innerWidth < 768 ? 1 : 2;
+}
+window.addEventListener("resize", adjustScrollSpeed);
+adjustScrollSpeed();
 
 function initializeScroll() {
   if (creationLibrary) creationLibrary.scrollLeft = 0;
@@ -73,22 +140,18 @@ function startAutoScroll() {
   scrollInterval = setInterval(() => {
     creationLibrary.scrollLeft += scrollSpeed;
 
-    if (
-      creationLibrary.scrollLeft + creationLibrary.clientWidth >=
-      creationLibrary.scrollWidth
-    ) {
+    const maxScroll = creationLibrary.scrollWidth - creationLibrary.clientWidth;
+    if (creationLibrary.scrollLeft >= maxScroll - 1) {
       creationLibrary.scrollLeft = 0;
     }
   }, 16);
 }
 
-// Hover pause
 creationLibrary?.addEventListener("mouseenter", () =>
   clearInterval(scrollInterval)
 );
 creationLibrary?.addEventListener("mouseleave", () => startAutoScroll());
 
-// Start scroll
 initializeScroll();
 startAutoScroll();
 
@@ -120,71 +183,4 @@ window.addEventListener("scroll", () => {
   const direction = currentScroll > lastScrollTop ? "down" : "up";
   document.body.setAttribute("data-scroll-direction", direction);
   lastScrollTop = Math.max(currentScroll, 0);
-});
-
-const messageForm = document.getElementById("messageForm");
-const modalConfirmation = document.getElementById("modalConfirmation");
-const confirmationCancel = document.getElementById("confirmationCancel");
-
-messageForm?.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Collect inputs
-  const nameInput = messageForm.querySelector(".modal-input[type='text']");
-  const emailInput = messageForm.querySelector(".modal-input[type='email']");
-  const codeSelect = messageForm.querySelector(".country-code");
-  const phoneInput = messageForm.querySelector(".phone-number");
-  const messageTextarea = messageForm.querySelector(".modal-textarea");
-
-  // Reset borders
-  [nameInput, emailInput, phoneInput, messageTextarea].forEach((el) => {
-    el.style.border = "none";
-  });
-
-  // Validation check
-  let hasError = false;
-
-  if (!nameInput.value.trim()) {
-    nameInput.style.border = "2px solid red";
-    hasError = true;
-  }
-
-  if (!emailInput.value.trim()) {
-    emailInput.style.border = "2px solid red";
-    hasError = true;
-  }
-
-  if (!phoneInput.value.trim()) {
-    phoneInput.style.border = "2px solid red";
-    hasError = true;
-  }
-
-  if (!messageTextarea.value.trim()) {
-    messageTextarea.style.border = "2px solid red";
-    hasError = true;
-  }
-
-  if (hasError) return;
-
-  // Simulate sending
-  const fullPhone = `${codeSelect.value} ${phoneInput.value}`;
-  console.log("Sending message:", {
-    name: nameInput.value,
-    email: emailInput.value,
-    phone: fullPhone,
-    message: messageTextarea.value,
-  });
-
-  // Swap content
-  messageForm.classList.add("hidden");
-  modalConfirmation.classList.add("show");
-});
-
-// Cancel confirmation
-confirmationCancel?.addEventListener("click", () => {
-  modalConfirmation.classList.remove("show");
-  messageForm.classList.remove("hidden");
-
-  // Optional: reset form
-  messageForm.reset();
 });
