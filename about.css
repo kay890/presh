@@ -1,0 +1,404 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body[data-scroll-direction="down"] .header {
+  opacity: 0.8;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+body[data-scroll-direction="up"] .header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body {
+  background-color: #000;
+  font-family: "Gellix", sans-serif;
+}
+
+.container {
+  max-width: 2040px;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-color: #eeeeee; */
+}
+
+.main {
+  width: 100%;
+  height: auto;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+}
+
+.header-content {
+  width: 80%;
+  height: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.logo,
+.about-me {
+  width: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  max-width: auto;
+  max-height: 32%;
+  object-fit: contain;
+}
+
+.about-me img {
+  max-width: auto;
+  max-height: 32%;
+  object-fit: cover;
+}
+
+.documentary-section {
+  width: 100%;
+  height: 900px;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+}
+
+.documentary-content {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  height: 95%;
+  color: #fff;
+  margin: 0 auto;
+  gap: 20px;
+  background-color: #111;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.label-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.line {
+  width: 400px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.paragraph-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.passion {
+  width: 100%;
+  height: 900px;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+}
+
+.passion-content {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  height: 95%;
+  color: white;
+  margin: 0 auto;
+  gap: 20px;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.purpose-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.purpose-content {
+  display: flex;
+  width: 80%;
+  height: 80%;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.purpose-text {
+  display: flex;
+  width: 50%;
+  font-size: 20px;
+  color: black;
+  padding-right: 10px;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.purpose-quote {
+  font-size: 44px;
+  font-weight: 400;
+  color: #333;
+  margin-top: 20px;
+  padding-left: 20px;
+  border-left: 4px solid green;
+  font-style: normal;
+}
+
+.quote-author {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+  text-align: right;
+  font-style: normal;
+}
+
+.purpose-image {
+  width: 50%;
+  text-align: center;
+}
+
+.purpose-image img {
+  height: 100%;
+  width: 80%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.footer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  background-color: #000;
+}
+
+.footer-content {
+  width: 80%;
+  height: 70%;
+  margin: 0 auto;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo,
+.facebook-logo,
+.linkedin-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.footer-email {
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+}
+
+.user-direct {
+  width: 100%;
+  height: 44px; /* or use % if you prefer */
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-direct-link {
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+  font-family: "Gellix", sans-serif;
+}
+
+@media screen and (max-width: 1024px) {
+  .documentary-content,
+  .passion-content {
+    width: 80%;
+    padding: 30px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .paragraph-text p {
+    font-size: 15px;
+  }
+
+  .purpose-content {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .purpose-text {
+    font-size: 18px;
+    gap: 80px;
+  }
+
+  .purpose-quote {
+    font-size: 32px;
+  }
+
+  .footer-content {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header-content {
+    width: 100%;
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+
+  .logo img,
+  .about-me img {
+    max-height: 24px;
+  }
+
+  .documentary-section,
+  .passion {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .documentary-content,
+  .passion-content {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .label-title {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .line {
+    width: 100px;
+    margin: 0 auto 20px;
+  }
+
+  .paragraph-text p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .purpose-content {
+    flex-direction: column;
+    width: 95%;
+    padding: 20px;
+  }
+
+  .purpose-text {
+    width: 100%;
+    font-size: 16px;
+    gap: 40px;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .purpose-quote {
+    font-size: 24px;
+    padding-left: 10px;
+    border-left: 3px solid green;
+  }
+
+  .quote-author {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .purpose-image {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .purpose-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-content {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .footer-email {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .user-direct-link {
+    font-size: 14px;
+  }
+}
+
+/* Scroll Animation Base */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
