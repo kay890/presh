@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Gellix";
+  src: url("Gellix-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -402,3 +411,4 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
