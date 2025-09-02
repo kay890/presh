@@ -1,12 +1,7 @@
 // =======================
 // 🔔 Popup Tag System
 // =======================
-function showPopup(
-  message,
-  targetElement,
-  bgColor = "#fff",
-  textColor = "#000"
-) {
+function showPopup(message, targetElement, bgColor = "#fff", textColor = "#000") {
   const popup = document.getElementById("popupTag");
   if (!popup || !targetElement) return;
 
@@ -26,16 +21,13 @@ function showPopup(
   }, 3000);
 }
 
-// Popup triggers
 document.querySelector(".explore-btn")?.addEventListener("click", function () {
   showPopup("Under development", this, "#fff", "#000");
 });
 
-document
-  .querySelector(".creation-button")
-  ?.addEventListener("click", function () {
-    showPopup("Coming soon!", this, "#000", "#fff");
-  });
+document.querySelector(".creation-button")?.addEventListener("click", function () {
+  showPopup("Coming soon!", this, "#000", "#fff");
+});
 
 document.querySelector(".tag-icon")?.addEventListener("click", function () {
   showPopup("amirekay's team", this, "green", "#fff");
@@ -72,12 +64,10 @@ messageForm?.addEventListener("submit", (e) => {
   const phoneInput = messageForm.querySelector(".phone-number");
   const messageTextarea = messageForm.querySelector(".modal-textarea");
 
-  // Reset borders
   [nameInput, emailInput, phoneInput, messageTextarea].forEach((el) => {
     el.style.border = "none";
   });
 
-  // Validation
   let hasError = false;
   if (!nameInput.value.trim()) {
     nameInput.style.border = "2px solid red";
@@ -97,7 +87,6 @@ messageForm?.addEventListener("submit", (e) => {
   }
   if (hasError) return;
 
-  // Simulate sending
   const fullPhone = `${codeSelect.value} ${phoneInput.value}`;
   console.log("Sending message:", {
     name: nameInput.value,
@@ -106,7 +95,6 @@ messageForm?.addEventListener("submit", (e) => {
     message: messageTextarea.value,
   });
 
-  // Show confirmation
   messageForm.classList.add("hidden");
   modalConfirmation.classList.add("show");
 });
@@ -118,7 +106,7 @@ confirmationCancel?.addEventListener("click", () => {
 });
 
 // =======================
-// 🖼️ Auto-Scrolling Gallery
+// 🖼️ Auto-Scrolling Gallery (Fixed for Mobile)
 // =======================
 const creationLibrary = document.querySelector(".creation-library");
 let scrollSpeed = 2;
@@ -147,9 +135,7 @@ function startAutoScroll() {
   }, 16);
 }
 
-creationLibrary?.addEventListener("mouseenter", () =>
-  clearInterval(scrollInterval)
-);
+creationLibrary?.addEventListener("mouseenter", () => clearInterval(scrollInterval));
 creationLibrary?.addEventListener("mouseleave", () => startAutoScroll());
 
 initializeScroll();
@@ -178,8 +164,7 @@ window.addEventListener("load", handleScrollAnimation);
 let lastScrollTop = 0;
 
 window.addEventListener("scroll", () => {
-  const currentScroll =
-    window.pageYOffset || document.documentElement.scrollTop;
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
   const direction = currentScroll > lastScrollTop ? "down" : "up";
   document.body.setAttribute("data-scroll-direction", direction);
   lastScrollTop = Math.max(currentScroll, 0);
