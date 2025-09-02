@@ -336,10 +336,11 @@ body {
 
   .title {
     font-size: 24px;
+    text-align: center;
   }
 
   .line {
-    width: 100px;
+    width: 180px;
     margin: 0 auto 20px;
   }
 
@@ -409,5 +410,6 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 
