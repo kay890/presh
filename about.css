@@ -67,16 +67,11 @@ body {
   align-items: center;
 }
 
-.logo img {
-  max-width: auto;
-  max-height: 32%;
-  object-fit: contain;
-}
-
+.logo img,
 .about-me img {
-  max-width: auto;
-  max-height: 32%;
-  object-fit: cover;
+  width: 28px;
+  height: auto;
+  object-fit: contain;
 }
 
 .documentary-section {
@@ -410,6 +405,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 
 
