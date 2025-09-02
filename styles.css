@@ -786,6 +786,14 @@ body[data-scroll-direction="up"] .header {
     max-width: 400px;
     padding: 20px;
   }
+
+  .text-top {
+    font-size: 20px;
+  }
+
+  .text-bottom {
+    font-size: 28px;
+  }
 }
 
 /* Scroll Animation Base */
@@ -799,4 +807,5 @@ body[data-scroll-direction="up"] .header {
   opacity: 1;
   transform: translateY(0);
 }
+
 
